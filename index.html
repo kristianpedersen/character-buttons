@@ -1,0 +1,80 @@
+<html>
+
+<body>
+	<button>–</button>
+	<button>«»</button>
+	<button>²</button>
+	<button>₂</button>
+	<button>±</button>
+	<button>≠</button>
+	
+	<button>←</button>
+	<button>↑</button>
+	<button>→</button>
+	<button>↓</button>
+	<button>↔</button>
+
+	<button>°</button>
+	<button>‰</button>
+	<button>•</button>
+	<button>™</button>
+	<button>µ</button>
+	<button>½</button>
+	<button>¼</button>
+
+	<textarea></textarea>
+
+	<p><span id="statusfelt"></span></p>
+	<style>
+		body {
+			font-family: sans-serif;
+			overflow: hidden;
+		}
+
+		button {
+			width: 180px;
+			height: 180px;
+			font-size: 100px;
+		}
+
+		p {
+			margin: 25px 0px;
+		}
+
+		span {
+			background-color: rgb(215, 255, 191);
+			padding: 10px;
+		}
+
+		span#statusfelt {
+			border: 1px solid;
+		}
+
+		textarea {
+			position: absolute;
+			bottom: 0px;
+		}
+	</style>
+	<script>
+		"use strict";
+
+		var buttons = document.querySelectorAll("button");
+		var ta = document.querySelector("textarea");
+		var info = document.querySelector("span");
+
+		for (var i = 0; i < buttons.length; i++) {
+			buttons[i].addEventListener("click", function () {
+				ta.innerHTML = this.innerHTML;
+				ta.select();
+				document.execCommand("copy");
+				info.innerHTML =
+					'<span style="font-weight: bold;"> ' +
+					this.innerHTML +
+					"</span> ble kopiert";
+			});
+		}
+
+	</script>
+</body>
+
+</html>
